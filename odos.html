@@ -1,0 +1,29 @@
+<head>
+  <title>One Degree of Seperation</title>
+</head>
+
+<body>
+  {{> loginButtons}}
+  
+  <h1>Welcome to One Degree of Seperation!</h1>
+  <p>A tool for reaching people</p>
+    
+  {{#if currentUser}}
+  {{> form}}
+  {{> connections}}
+  {{/if}}
+</body>
+<template name="form">
+  <form><input type="text" placeholder="Search for Twitter screen name" {{disabled}}></form>
+</template>
+<template name="connections">
+  {{#if connectionsReady}}
+  <ul>
+    {{#each connections}}
+    <li><img src="{{profile_image_url_https}}"> {{name}} {{followers_count}}</li>
+    {{/each}}
+  </ul>  
+  {{else}}
+  ...
+  {{/if}}
+</template>
